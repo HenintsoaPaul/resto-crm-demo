@@ -1,4 +1,4 @@
-package mg.atlasss.restocrmdemo.temp;
+package mg.atlasss.restocrmdemo.group;
 
 import jakarta.persistence.*;
 import lombok.*;

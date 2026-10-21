@@ -1,42 +1,39 @@
-package mg.atlasss.restocrmdemo.temp;
+package mg.atlasss.restocrmdemo.security;
 
 import jakarta.persistence.*;
 import lombok.*;
+import mg.atlasss.restocrmdemo.user.User;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.OffsetDateTime;
 
 @Entity
-@Table(name = "restaurants", indexes = {
-        @Index(name = "idx_restaurants_group_id", columnList = "group_id")
+@Table(name = "refresh_tokens", indexes = {
+        @Index(name = "idx_refresh_tokens_user_id", columnList = "user_id")
 })
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder
-public class Restaurant {
+public class RefreshToken {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "group_id", nullable = false)
-    private Group group;
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    @Column(nullable = false)
-    private String name;
+    @Column(name = "token_hash", nullable = false, unique = true, length = 255)
+    private String tokenHash;
 
-    @Column(length = 500)
-    private String address;
+    @Column(name = "expires_at", nullable = false)
+    private OffsetDateTime expiresAt;
 
-    @Column(length = 50)
-    private String phone;
-
-    @Builder.Default
-    @Column(name = "is_active", nullable = false)
-    private Boolean isActive = true;
+    @Column(name = "revoked_at")
+    private OffsetDateTime revokedAt;
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)

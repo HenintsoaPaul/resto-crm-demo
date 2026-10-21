@@ -1,4 +1,4 @@
-package mg.atlasss.restocrmdemo.temp;
+package mg.atlasss.restocrmdemo.user;
 
 public enum Role {
     GROUP_ADMIN,

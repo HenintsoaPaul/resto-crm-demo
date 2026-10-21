@@ -1,7 +1,9 @@
-package mg.atlasss.restocrmdemo.temp;
+package mg.atlasss.restocrmdemo.user;
 
 import jakarta.persistence.*;
 import lombok.*;
+import mg.atlasss.restocrmdemo.group.Group;
+import mg.atlasss.restocrmdemo.restaurant.Restaurant;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
