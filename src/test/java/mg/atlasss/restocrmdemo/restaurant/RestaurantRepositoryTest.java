@@ -44,6 +44,6 @@ class RestaurantRepositoryTest {
         // --- ASSERT ---
         assertThat(results).isNotEmpty();
         assertThat(results).hasSize(1);
-        assertThat(results.get(0).getName()).isEqualTo("Gourmet Burger");
+        assertThat(results.getFirst().getName()).isEqualTo("Gourmet Burger");
     }
 }

@@ -49,7 +49,7 @@ class RestaurantServiceTest {
         assertThat(response).isNotNull();
         assertThat(response).hasSize(1);
 
-        var resto = response.get(0);
+        var resto = response.getFirst();
         assertThat(resto.name()).isEqualTo("Pizza Place");
         assertThat(resto.address()).isEqualTo("address123");
         assertThat(resto.phone()).isEqualTo("123");

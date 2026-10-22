@@ -26,7 +26,7 @@ public class RefreshToken {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(name = "token_hash", nullable = false, unique = true, length = 255)
+    @Column(name = "token_hash", nullable = false, unique = true)
     private String tokenHash;
 
     @Column(name = "expires_at", nullable = false)
@@ -42,4 +42,10 @@ public class RefreshToken {
     @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
     private OffsetDateTime updatedAt;
+
+    public RefreshToken(User user, String hash, OffsetDateTime expiresAt) {
+        this.user = user;
+        this.tokenHash = hash;
+        this.expiresAt = expiresAt;
+    }
 }
