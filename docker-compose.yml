@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: resto_crm_demo
+      POSTGRES_USER: resto_crm_demo
+      POSTGRES_PASSWORD: resto_crm_demo
+    ports:
+      - "5432:5432"
+    volumes:
+      - resto-crm-demo-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U resto_crm_demo -d resto_crm_demo"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  resto-crm-demo-postgres-data:
